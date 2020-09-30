@@ -29,7 +29,7 @@ namespace Data_Structures
             dictionary.Add(18, "eighteen");
             dictionary.Add(19, "nineteen");
             dictionary.Add(20, "twenty");
-            dictionary.Add(20, "UPDATEDtwenty");
+            dictionary.Add(20, "NEWtwenty");
 
             dictionary.Remove(3);
 
