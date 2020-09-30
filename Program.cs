@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Data_Structures
+﻿namespace Data_Structures
 {
     public static class Program
     {

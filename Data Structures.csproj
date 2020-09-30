@@ -40,6 +40,7 @@
     <ItemGroup>
         <Compile Include="ArrayClass.cs" />
         <Compile Include="BigONotation.cs" />
+        <Compile Include="BinaryTree.cs" />
         <Compile Include="CharFinder.cs" />
         <Compile Include="DictionaryClass.cs" />
         <Compile Include="FormatChecker.cs" />
