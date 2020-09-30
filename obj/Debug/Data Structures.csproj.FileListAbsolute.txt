@@ -1,0 +1,6 @@
+/Users/andverm/Application Files/Rider/Data Structures/Data Structures/bin/Debug/Data_Structures.exe
+/Users/andverm/Application Files/Rider/Data Structures/Data Structures/bin/Debug/Data_Structures.pdb
+/Users/andverm/Application Files/Rider/Data Structures/Data Structures/obj/Debug/Data Structures.csprojAssemblyReference.cache
+/Users/andverm/Application Files/Rider/Data Structures/Data Structures/obj/Debug/Data Structures.csproj.CoreCompileInputs.cache
+/Users/andverm/Application Files/Rider/Data Structures/Data Structures/obj/Debug/Data_Structures.exe
+/Users/andverm/Application Files/Rider/Data Structures/Data Structures/obj/Debug/Data_Structures.pdb
