@@ -15,8 +15,19 @@ namespace Data_Structures
             binaryTree.Insert(6);
             binaryTree.Insert(8);
             binaryTree.Insert(10);
+            
+            var binaryTreeTwo = new BinaryTree();
 
-            Console.WriteLine(binaryTree.Height());
+            binaryTreeTwo.Insert(7);
+            binaryTreeTwo.Insert(4);
+            binaryTreeTwo.Insert(9);
+            binaryTreeTwo.Insert(1);
+            binaryTreeTwo.Insert(6);
+            binaryTreeTwo.Insert(8);
+            binaryTreeTwo.Insert(10);
+
+            Console.WriteLine(binaryTree.Equals(binaryTreeTwo));
+            Console.WriteLine(binaryTree.IsBinarySearchTree());
         }
     }
 }
