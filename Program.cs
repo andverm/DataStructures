@@ -15,10 +15,8 @@ namespace Data_Structures
             binaryTree.Insert(6);
             binaryTree.Insert(8);
             binaryTree.Insert(10);
-            
-            var findTest = binaryTree.Find(2);
 
-            Console.WriteLine(findTest);
+            Console.WriteLine(binaryTree.Height());
         }
     }
 }
