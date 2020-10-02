@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Data_Structures
 {
@@ -151,6 +152,26 @@ namespace Data_Structures
             return false;
         }
 
+        public int MaxValue()
+        {
+            return MaxValue(_root, Int32.MinValue);
+        }
+
+        private int MaxValue(TreeNode root, int maxValue)
+        {
+            if (root == null)
+                return Int32.MinValue;
+
+            if (root.Value > maxValue)
+                maxValue = root.Value;
+
+            var maxChildren = Math.Max(
+                MaxValue(root.LeftChild, maxValue),
+                MaxValue(root.RightChild, maxValue));
+
+            return Math.Max(maxValue, maxChildren);
+        }
+
         public bool IsBinarySearchTree()
         {
             return IsBinarySearchTree(_root, Int32.MinValue, Int32.MaxValue);
@@ -166,6 +187,81 @@ namespace Data_Structures
 
             return IsBinarySearchTree(node.LeftChild, min, node.Value - 1)
                    && IsBinarySearchTree(node.RightChild, node.Value + 1, max);
+        }
+
+        public List<int> GetNodesAtDistance(int distance)
+        {
+            var list = new List<int>();
+            GetNodesAtDistance(_root, distance, list);
+
+            return list;
+        }
+
+        private void GetNodesAtDistance(TreeNode root, int distance, List<int> list)
+        {
+            if (root == null)
+                return;
+
+            if (distance == 0)
+            {
+                list.Add(root.Value);
+                return;
+            }
+
+            GetNodesAtDistance(root.LeftChild, distance - 1, list);
+            GetNodesAtDistance(root.RightChild, distance - 1, list);
+        }
+
+        public int Size()
+        {
+            return Size(_root, 0);
+        }
+
+        private int Size(TreeNode root, int size)
+        {
+            if (root == null)
+                return size;
+
+            size++;
+
+            size = Size(root.LeftChild, size);
+            size = Size(root.RightChild, size);
+
+            return size;
+        }
+
+        public int CountLeaves()
+        {
+            return CountLeaves(_root);
+        }
+
+        private int CountLeaves(TreeNode root)
+        {
+            if (root == null)
+                return 0;
+
+            if (IsLeafNode(root))
+                return 1;
+
+            var left = CountLeaves(root.LeftChild);
+            var right = CountLeaves(root.RightChild);
+
+            return left + right;
+        }
+
+        public List<int> TraverseLevelOrder()
+        {
+            var list = new List<int>();
+
+            for (int i = 0; i < Height(); i++)
+            {
+                foreach (var item in GetNodesAtDistance(i))
+                {
+                    list.Add(item);
+                }
+            }
+
+            return list;
         }
 
         public void TraversePreOrder()

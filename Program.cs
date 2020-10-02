@@ -15,7 +15,7 @@ namespace Data_Structures
             binaryTree.Insert(6);
             binaryTree.Insert(8);
             binaryTree.Insert(10);
-            
+
             var binaryTreeTwo = new BinaryTree();
 
             binaryTreeTwo.Insert(7);
@@ -28,6 +28,20 @@ namespace Data_Structures
 
             Console.WriteLine(binaryTree.Equals(binaryTreeTwo));
             Console.WriteLine(binaryTree.IsBinarySearchTree());
+
+            var list = binaryTree.GetNodesAtDistance(2);
+
+            foreach (var value in list)
+            {
+                Console.WriteLine(value);
+            }
+
+            foreach (var value in binaryTree.TraverseLevelOrder())
+            {
+                Console.WriteLine(value);
+            }
+
+            Console.WriteLine(binaryTree.MaxValue());
         }
     }
 }
