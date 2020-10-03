@@ -53,29 +53,6 @@ namespace Data_Structures
             return 1 + Math.Max(heightLeft, heightRight);
         }
 
-        public bool IsBalanced()
-        {
-            return IsBalanced(_root);
-        }
-
-        private bool IsBalanced(TreeNode root)
-        {
-            if (root == null)
-                return true;
-
-            if (IsLeafNode(root))
-                return true;
-
-            var leftHeight = root.LeftChild.Height;
-            var rightHeight = root.RightChild.Height;
-            var heightOffset = leftHeight - rightHeight;
-
-            if (heightOffset < -1 || heightOffset > 1)
-                return false;
-
-            return IsBalanced(root.LeftChild) == IsBalanced(root.RightChild);
-        }
-
         private bool IsLeafNode(TreeNode node)
         {
             return node.LeftChild == null && node.RightChild == null;
