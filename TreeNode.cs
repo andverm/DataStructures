@@ -2,7 +2,8 @@ namespace Data_Structures
 {
     public class TreeNode
     {
-        public int Value { get; private set; }
+        public int Value { get; }
+        public int Height { get; private set; }
         public TreeNode LeftChild { get; set; }
         public TreeNode RightChild { get; set; }
 
@@ -11,9 +12,9 @@ namespace Data_Structures
             Value = value;
         }
 
-        public void IncreaseValue(int value = 1)
+        public void SetHeight(int height)
         {
-            Value += value;
+            Height = height;
         }
     }
 }

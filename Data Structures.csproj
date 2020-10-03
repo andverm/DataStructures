@@ -39,6 +39,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="ArrayClass.cs" />
+        <Compile Include="AvlTree.cs" />
         <Compile Include="BigONotation.cs" />
         <Compile Include="BinaryTree.cs" />
         <Compile Include="CharFinder.cs" />
