@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Data_Structures
 {
@@ -23,13 +25,24 @@ namespace Data_Structures
 
             root.SetHeight(Height(root));
 
+            return Balance(root);
+        }
+
+        private TreeNode Balance(TreeNode root)
+        {
             if (IsLeftHeavy(root))
             {
-                Console.WriteLine("left");
+                if (BalanceFactor(root.LeftChild) < 0)
+                    root.LeftChild = RotateLeft(root.LeftChild);
+
+                return RotateRight(root);
             }
             else if (IsRightHeavy(root))
             {
-                Console.WriteLine("right");
+                if (BalanceFactor(root.RightChild) > 0)
+                    root.RightChild = RotateRight(root.RightChild);
+
+                return RotateLeft(root);
             }
 
             return root;
@@ -74,6 +87,73 @@ namespace Data_Structures
                 return 0;
 
             return Height(node.LeftChild) - Height(node.RightChild);
+        }
+
+        public int Size()
+        {
+            if (_root == null)
+                return 0;
+
+            return Size(_root, 1);
+        }
+
+        private int Size(TreeNode root, int size)
+        {
+            if (root == null)
+                return size;
+
+            size++;
+
+            var sizeLeft = Size(root.LeftChild, size);
+            var sizeRight = Size(root.RightChild, size);
+
+            return Math.Max(sizeLeft, sizeRight);
+        }
+
+        public List<TreeNode> GetLeaves()
+        {
+            var leaves = new List<TreeNode>();
+            GetLeaves(_root, leaves);
+            return leaves;
+        }
+
+        private void GetLeaves(TreeNode root, List<TreeNode> leaves)
+        {
+            if (root == null)
+                return;
+
+            if (IsLeafNode(root))
+            {
+                leaves.Add(root);
+                return;
+            }
+
+            GetLeaves(root.LeftChild, leaves);
+            GetLeaves(root.RightChild, leaves);
+        }
+
+        private TreeNode RotateLeft(TreeNode root)
+        {
+            var newRoot = root.RightChild;
+            root.RightChild = newRoot.LeftChild;
+            newRoot.LeftChild = root;
+
+            root.SetHeight(Height(root));
+            newRoot.SetHeight(Height(newRoot));
+
+            return newRoot;
+        }
+
+        private TreeNode RotateRight(TreeNode root)
+        {
+            var newRoot = root.LeftChild;
+            root.LeftChild = newRoot.RightChild;
+            newRoot.RightChild = root;
+
+            root.SetHeight(Height(root));
+            newRoot.SetHeight(Height(newRoot));
+
+            return newRoot;
         }
     }
 }
