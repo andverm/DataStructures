@@ -20,6 +20,9 @@ namespace Data_Structures
 
         public void Remove()
         {
+            if (IsEmpty())
+                return;
+
             _size--;
             _items[0] = _items[_size];
 
@@ -41,20 +44,23 @@ namespace Data_Structures
         {
             var index = 0;
 
-            while (_items[index] < GetLeftChild(index) ||
-                   _items[index] < GetRightChild(index))
+            while (index <= _size && !IsValidParent(index))
             {
-                var validParent = GetValidParent(index);
-                var parentIndex = Array.IndexOf(_items, validParent);
-
-                Swap(parentIndex, index);
-                index = parentIndex;
+                var largerChildIndex = GetLargerChildIndex(index);
+                Swap(largerChildIndex, index);
+                index = largerChildIndex;
             }
         }
 
-        private int GetValidParent(int index)
+        private bool IsValidParent(int index)
         {
-            return Math.Max(GetLeftChild(index), GetRightChild(index));
+            return _items[index] >= GetLeftChild(index) &&
+                   _items[index] >= GetRightChild(index);
+        }
+
+        private int GetLargerChildIndex(int index)
+        {
+            return GetLeftChild(index) > GetRightChild(index) ? GetLeftChildIndex(index) : GetRightChildIndex(index);
         }
 
         private int GetLeftChild(int index)
@@ -90,6 +96,11 @@ namespace Data_Structures
         public bool IsFull()
         {
             return _size >= _items.Length;
+        }
+
+        public bool IsEmpty()
+        {
+            return _size == 0;
         }
 
         private void Swap(int index, int parentIndex)
