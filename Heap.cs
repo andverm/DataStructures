@@ -18,15 +18,18 @@ namespace Data_Structures
             BubbleUp();
         }
 
-        public void Remove()
+        public int Remove()
         {
             if (IsEmpty())
-                return;
+                return -1;
 
+            var root = _items[0];
             _size--;
             _items[0] = _items[_size];
 
             BubbleDown();
+
+            return root;
         }
 
         private void BubbleUp()
@@ -54,13 +57,35 @@ namespace Data_Structures
 
         private bool IsValidParent(int index)
         {
+            if (!HasLeftChild(index))
+                return true;
+
+            if (!HasRightChild(index))
+                return _items[index] >= GetLeftChild(index);
+
             return _items[index] >= GetLeftChild(index) &&
                    _items[index] >= GetRightChild(index);
         }
 
         private int GetLargerChildIndex(int index)
         {
+            if (!HasLeftChild(index))
+                return index;
+
+            if (!HasRightChild(index))
+                return GetLeftChildIndex(index);
+
             return GetLeftChild(index) > GetRightChild(index) ? GetLeftChildIndex(index) : GetRightChildIndex(index);
+        }
+
+        private bool HasLeftChild(int index)
+        {
+            return GetLeftChildIndex(index) <= _size;
+        }
+
+        private bool HasRightChild(int index)
+        {
+            return GetRightChildIndex(index) <= _size;
         }
 
         private int GetLeftChild(int index)

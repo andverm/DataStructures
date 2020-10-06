@@ -6,21 +6,14 @@ namespace Data_Structures
     {
         public static void Main()
         {
-            var heap = new Heap();
+            int[] numbers = new[] { 5, 3, 8, 4, 1, 2, 9};
 
-            heap.Insert(10);
-            heap.Insert(5);
-            heap.Insert(17);
-            heap.Insert(4);
-            heap.Insert(22);
+            Heapifier.Heapify(numbers);
 
-            Console.WriteLine();
-            heap.Print();
-
-            heap.Remove();
-
-            Console.WriteLine();
-            heap.Print();
+            foreach (var number in numbers)
+            {
+                Console.WriteLine(number);
+            }
         }
     }
 }

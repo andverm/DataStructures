@@ -19,6 +19,7 @@ namespace Data_Structures
         public int Remove()
         {
             int item = _items[0];
+
             for (int i = 0; i < _queueLength - 1; i++)
             {
                 _items[i] = _items[i + 1];
@@ -32,12 +33,14 @@ namespace Data_Structures
         public void Reverse(int length)
         {
             var reverser = new Stack<int>();
+
             for (int i = 0; i < length; i++)
             {
                 reverser.Push(_items[i]);
             }
 
             int reverserCount = reverser.Count;
+
             for (int i = 0; i < reverserCount; i++)
             {
                 _items[i] = reverser.Pop();
@@ -71,6 +74,7 @@ namespace Data_Structures
         private int ShiftItemsAndReturnItemIndex(int item)
         {
             int i;
+
             for (i = _queueLength - 1; i >= 0; i--)
             {
                 if (_items[i] > item)
