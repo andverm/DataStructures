@@ -91,23 +91,18 @@ namespace Data_Structures
 
         public int Size()
         {
-            if (_root == null)
-                return 0;
-
-            return Size(_root, 1);
+            return Size(_root);
         }
 
-        private int Size(TreeNode root, int size)
+        private int Size(TreeNode root)
         {
             if (root == null)
-                return size;
+                return 0;
 
-            size++;
+            var sizeLeft = Size(root.LeftChild);
+            var sizeRight = Size(root.RightChild);
 
-            var sizeLeft = Size(root.LeftChild, size);
-            var sizeRight = Size(root.RightChild, size);
-
-            return Math.Max(sizeLeft, sizeRight);
+            return 1 + sizeLeft + sizeRight;
         }
 
         public List<TreeNode> GetLeaves()
@@ -130,6 +125,61 @@ namespace Data_Structures
 
             GetLeaves(root.LeftChild, leaves);
             GetLeaves(root.RightChild, leaves);
+        }
+
+        private int DepthOfNode(TreeNode node)
+        {
+            return DepthOfNode(_root, node.Value, 0);
+        }
+
+        private int DepthOfNode(TreeNode root, int value, int depth)
+        {
+            if (root == null)
+                return depth;
+
+            if (root.Value == value)
+                return depth;
+
+            depth++;
+
+            var depthLeft = DepthOfNode(root.LeftChild, value, depth);
+            var depthRight = DepthOfNode(root.RightChild, value, depth);
+            return Math.Min(depthLeft, depthRight);
+        }
+
+        public bool IsPerfect()
+        {
+            var leaves = GetLeaves();
+
+            foreach (var leaf in leaves)
+            {
+                Console.WriteLine(leaf.Value);
+            }
+
+            var size = Size();
+            var maxCount = GetMaxCountAtCurrentHeight();
+
+            Console.WriteLine($"count: {size}");
+            Console.WriteLine($"capacity: {maxCount}");
+
+            return maxCount == size;
+        }
+
+        private int GetMaxCountAtCurrentHeight()
+        {
+            if (_root == null)
+                return 0;
+
+            var height = _root.Height;
+            var maxCount = 2;
+
+            while (height > 0)
+            {
+                maxCount *= 2;
+                height--;
+            }
+
+            return maxCount - 1;
         }
 
         private TreeNode RotateLeft(TreeNode root)

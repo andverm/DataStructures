@@ -61,18 +61,23 @@ namespace Data_Structures
             return false;
         }
 
-        public void Depth()
+        public void Depth(TreeNode root, int value)
         {
-            Console.WriteLine(Depth(_root));
+            Depth(_root, _root.Value, 0);
         }
 
-        private int Depth(TreeNode node)
+        private int Depth(TreeNode root, int value, int depth)
         {
-            if (node == null)
-                return 0;
+            if (root == null)
+                return depth;
 
-            var depthLeft = Depth(node.LeftChild);
-            var depthRight = Depth(node.RightChild);
+            depth++;
+
+            if (root.Value == value)
+                return depth;
+
+            var depthLeft = Depth(root.LeftChild, value, depth);
+            var depthRight = Depth(root.RightChild, value, depth);
             return 1 + Math.Max(depthLeft, depthRight);
         }
 
@@ -89,8 +94,8 @@ namespace Data_Structures
             if (IsLeafNode(node))
                 return 0;
 
-            var depthLeft = Depth(node.LeftChild);
-            var depthRight = Depth(node.RightChild);
+            var depthLeft = Height(node.LeftChild);
+            var depthRight = Height(node.RightChild);
             return 1 + Math.Max(depthLeft, depthRight);
         }
 
