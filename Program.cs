@@ -6,17 +6,21 @@ namespace Data_Structures
     {
         public static void Main()
         {
-            var avlTree = new AvlTree();
+            var heap = new Heap();
 
-            avlTree.Insert(10);
-            avlTree.Insert(20);
-            avlTree.Insert(30);
-            avlTree.Insert(40);
-            avlTree.Insert(50);
-            avlTree.Insert(60);
-            avlTree.Insert(70);
+            heap.Insert(10);
+            heap.Insert(5);
+            heap.Insert(17);
+            heap.Insert(4);
+            heap.Insert(22);
 
-            Console.WriteLine(avlTree.IsPerfect());
+            Console.WriteLine();
+            heap.Print();
+
+            heap.Remove();
+
+            Console.WriteLine();
+            heap.Print();
         }
     }
 }

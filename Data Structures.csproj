@@ -45,6 +45,7 @@
         <Compile Include="CharFinder.cs" />
         <Compile Include="DictionaryClass.cs" />
         <Compile Include="FormatChecker.cs" />
+        <Compile Include="Heap.cs" />
         <Compile Include="KeyValue.cs" />
         <Compile Include="LinkedListClass.cs" />
         <Compile Include="ListNode.cs" />
