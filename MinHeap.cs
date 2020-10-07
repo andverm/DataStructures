@@ -4,7 +4,7 @@ namespace Data_Structures
 {
     public class MinHeap
     {
-        private KeyValue[] _items = new KeyValue[10];
+        private readonly KeyValue[] _items = new KeyValue[10];
         private int _size;
 
         public void Insert(int key, string value)
@@ -18,6 +18,19 @@ namespace Data_Structures
             _size++;
 
             Heapify();
+        }
+
+        public string Remove()
+        {
+            if (IsEmpty())
+                return null;
+
+            var value = _items[0].Value;
+            _size--;
+            _items[0] = _items[_size];
+            Heapify();
+
+            return value;
         }
 
         private void Heapify()
@@ -59,6 +72,11 @@ namespace Data_Structures
         private bool IsFull()
         {
             return _size >= _items.Length;
+        }
+
+        private bool IsEmpty()
+        {
+            return _size == 0;
         }
 
         public void Print()

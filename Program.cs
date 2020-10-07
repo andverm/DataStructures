@@ -22,6 +22,12 @@ namespace Data_Structures
 
             heap.Print();
 
+            Console.WriteLine();
+            Console.WriteLine(heap.Remove());
+            
+            Console.WriteLine();
+            heap.Print();
+
         }
     }
 }

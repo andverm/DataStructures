@@ -26,7 +26,6 @@ namespace Data_Structures
             var root = _items[0];
             _size--;
             _items[0] = _items[_size];
-
             BubbleDown();
 
             return root;
