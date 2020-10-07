@@ -6,14 +6,22 @@ namespace Data_Structures
     {
         public static void Main()
         {
-            int[] numbers = new[] { 5, 3, 8, 4, 1, 2, 9};
 
-            Heapifier.Heapify(numbers);
+            var heap = new MinHeap();
 
-            foreach (var number in numbers)
-            {
-                Console.WriteLine(number);
-            }
+            heap.Insert(4, "gem");
+            heap.Insert(7, "boat");
+            heap.Insert(3, "car");
+            heap.Insert(12, "broom");
+            heap.Insert(76, "cat");
+            heap.Insert(1, "dog");
+            heap.Insert(8, "food");
+            heap.Insert(8976, "skin");
+            heap.Insert(21, "chair");
+            heap.Insert(576, "door");
+
+            heap.Print();
+
         }
     }
 }

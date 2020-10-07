@@ -3,7 +3,7 @@ namespace Data_Structures
     public class KeyValue
     {
         public int Key { get; }
-        public string Value { get; set; }
+        public string Value { get; private set; }
 
         public KeyValue(int key, string value)
         {

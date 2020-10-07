@@ -55,6 +55,32 @@ namespace Data_Structures
             }
         }
 
+        public bool IsMaxHeap()
+        {
+            if (_size == 0)
+                return false;
+
+            if (_size == 1)
+                return true;
+
+            return IsMaxHeap(0);
+        }
+
+        private bool IsMaxHeap(int index)
+        {
+            if (!HasLeftChild(index))
+                return true;
+
+            if (!HasRightChild(index) && GetLeftChild(index) <= _items[index])
+                return IsMaxHeap(GetLeftChildIndex(index));
+
+            if (_items[GetLargerChildIndex(index)] <= _items[index])
+                return IsMaxHeap(GetLeftChildIndex(index)) &&
+                       IsMaxHeap(GetRightChildIndex(index));
+
+            return false;
+        }
+
         private bool IsValidParent(int index)
         {
             if (!HasLeftChild(index))
@@ -80,12 +106,12 @@ namespace Data_Structures
 
         private bool HasLeftChild(int index)
         {
-            return GetLeftChildIndex(index) <= _size;
+            return GetLeftChildIndex(index) < _size;
         }
 
         private bool HasRightChild(int index)
         {
-            return GetRightChildIndex(index) <= _size;
+            return GetRightChildIndex(index) < _size;
         }
 
         private int GetLeftChild(int index)
