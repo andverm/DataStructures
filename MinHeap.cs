@@ -37,7 +37,7 @@ namespace Data_Structures
         {
             var lastParentIndex = _size / 2 - 1;
 
-            for (int i = lastParentIndex; i >= 0; i--)
+            for (var i = lastParentIndex; i >= 0; i--)
             {
                 Heapify(i);
             }
@@ -81,7 +81,7 @@ namespace Data_Structures
 
         public void Print()
         {
-            for (int i = 0; i < _size; i++)
+            for (var i = 0; i < _size; i++)
             {
                 Console.WriteLine($"[{_items[i].Key}, {_items[i].Value}]");
             }

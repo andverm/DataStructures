@@ -4,7 +4,7 @@ namespace Data_Structures
 {
     public class Heap
     {
-        private int[] _items = new int[7];
+        private readonly int[] _items = new int[7];
         private int _size;
 
         public void Insert(int value)

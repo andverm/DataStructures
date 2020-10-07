@@ -25,9 +25,12 @@ namespace Data_Structures
         public string Get(int key)
         {
             var subList = GetOrCreateSubList(key);
-
             var item = LookUpItemBasedOnKey(key, subList);
-            return item != null ? item.Value : "Invalid Key";
+
+            if (item != null)
+                return item.Value;
+
+            return "Invalid Key";
         }
 
         public void Remove(int key)
@@ -58,7 +61,7 @@ namespace Data_Structures
             }
         }
 
-        private int GenerateHash(int key)
+        private int GenerateIndex(int key)
         {
             var index = key % _mainList.Length;
             return index;
@@ -66,15 +69,13 @@ namespace Data_Structures
 
         private LinkedList<KeyValue> GetOrCreateSubList(int key)
         {
-            var index = GenerateHash(key);
-            var main = _mainList[index];
+            var index = GenerateIndex(key);
+            var subList = _mainList[index];
 
-            if (main != null)
-            {
-                return main;
-            }
+            if (subList != null)
+                return subList;
 
-            return (_mainList[index] = new LinkedList<KeyValue>());
+            return _mainList[index] = new LinkedList<KeyValue>();
         }
 
         private KeyValue LookUpItemBasedOnKey(int key, LinkedList<KeyValue> subList)

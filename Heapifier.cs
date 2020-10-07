@@ -6,7 +6,7 @@ namespace Data_Structures
         {
             var lastParentIndex = array.Length / 2 - 1;
 
-            for (int i = lastParentIndex; i >= 0; i--)
+            for (var i = lastParentIndex; i >= 0; i--)
             {
                 Heapify(array, i);
             }
