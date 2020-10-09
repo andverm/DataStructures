@@ -44,6 +44,8 @@
         <Compile Include="BinaryTree.cs" />
         <Compile Include="CharFinder.cs" />
         <Compile Include="DictionaryClass.cs" />
+        <Compile Include="EventCaller.cs" />
+        <Compile Include="EventSubscriber.cs" />
         <Compile Include="FormatChecker.cs" />
         <Compile Include="Heap.cs" />
         <Compile Include="Heapifier.cs" />
@@ -58,6 +60,7 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="QueueClass.cs" />
         <Compile Include="QueueClassUsingStack.cs" />
+        <Compile Include="RunDataEventArgs.cs" />
         <Compile Include="StackClass.cs" />
         <Compile Include="StringReverser.cs" />
         <Compile Include="TreeNode.cs" />
