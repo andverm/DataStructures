@@ -10,13 +10,13 @@ namespace Data_Structures
 
             foreach (var character in word)
             {
-                if (!currentRoot.Children.ContainsKey(character))
-                    currentRoot.Children.Add(character, new TrieNodeDictionary(character));
+                if (!currentRoot.HasChild(character))
+                    currentRoot.CreateChild(character);
 
-                currentRoot = currentRoot.Children[character];
+                currentRoot = currentRoot.GetChild(character);
             }
 
-            currentRoot.IsEndOfWord = true;
+            currentRoot.SetAsEndOfWord();
         }
     }
 }

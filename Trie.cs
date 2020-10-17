@@ -6,19 +6,19 @@ namespace Data_Structures
 
         public void InsertAlternate(string word)
         {
-            var current = _root;
+            var currentRoot = _root;
 
             foreach (var character in word)
             {
                 var index = GenerateIndex(character);
 
-                if (current.Children[index] == null)
-                    current.Children[index] = new TrieNode(character);
+                if (currentRoot.Children[index] == null)
+                    currentRoot.Children[index] = new TrieNode(character);
 
-                current = current.Children[index];
+                currentRoot = currentRoot.Children[index];
             }
 
-            current.IsEndOfWord = true;
+            currentRoot.IsEndOfWord = true;
         }
 
         public void Insert(string word)
